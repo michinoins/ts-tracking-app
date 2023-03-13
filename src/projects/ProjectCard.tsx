@@ -1,5 +1,4 @@
 import { Project } from "./Project";
-import React from "react";
 
 function formatDescription(description: string): string {
   return description.substring(0, 60) + "...";
