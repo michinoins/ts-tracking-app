@@ -1,6 +1,6 @@
 import { Project } from "./Project";
-const baseUrl = "http://localhost:4000";
-const url = `${baseUrl}/projects`;
+const baseUrl = "http://localhost:8080";
+const url = `${baseUrl}`;
 
 function translateStatusToErrorMessage(status: number) {
   switch (status) {
@@ -50,8 +50,8 @@ function convertToProjectModel(item: any): Project {
 }
 
 const projectAPI = {
-  get(page = 1, limit = 20) {
-    return fetch(`${url}?_page=${page}&_limit=${limit}&_sort=name`)
+  get() {
+    return fetch(`${url}/projects`)
       .then(delay(600))
       .then(checkStatus)
       .then(parseJSON)
@@ -65,7 +65,7 @@ const projectAPI = {
   },
 
   find(id: number) {
-    return fetch(`${url}/${id}`)
+    return fetch(`${url}/projects/${id}`)
       .then(checkStatus)
       .then(parseJSON)
       .then(convertToProjectModel);
